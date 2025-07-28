@@ -7,15 +7,30 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-const uploadResult = await cloudinary.uploader
-       .upload(
-           'https://res.cloudinary.com/demo/image/upload/getting-started/shoes.jpg', {
-               public_id: 'shoes',
-           }
-       )
-       .catch((error) => {
-           console.log(error);
-       });
-    
-    console.log(uploadResult);
+const uploadOnCloudinary = async (localFilePath) => {
+  try {
+    if (!localFilePath) return null;
+    const response = await cloudinary.uploader.upload(localFilePath, {
+      resource_type: "auto",
+    });
+    console.log("File uploaded successfully");
+    return response;
+  } catch (error) {
+    fs.unlinkSync(localFilePath);
+    return null;
+  }
+};
+cloudinary.v2.uploader();
 
+const uploadResult = await cloudinary.uploader
+  .upload(
+    "https://res.cloudinary.com/demo/image/upload/getting-started/shoes.jpg",
+    {
+      public_id: "shoes",
+    }
+  )
+  .catch((error) => {
+    console.log(error);
+  });
+
+console.log(uploadResult);
