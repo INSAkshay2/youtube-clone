@@ -1,12 +1,13 @@
 import mongoose from "mongoose";
-import { DB_Name } from "./constants.js";
+// import { DB_Name } from "../../constants.js";
 
 const connectDB = async () => {
   try {
     const connectionInstance = await mongoose.connect(
-      `${process.env.MONGODB_URI}/${DB_Name}`
+      `${process.env.MONGODB_URI}/"youtube-clone`
     );
     console.log("Connected to MongoDB successfully");
+    return connectionInstance;
   } catch (error) {
     console.log("Error connecting to MongoDB:", error);
     process.exit(1);
