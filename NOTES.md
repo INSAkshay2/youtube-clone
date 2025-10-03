@@ -1,5 +1,6 @@
 // Important Notes BACKEND 
 **Setup of the file**
+npm i express mongoose cookie-parser cors
 cd src 
 touch app.js constant.js index.js
 package.json - "type" :"module"
@@ -38,3 +39,9 @@ connectDB()
   .catch((error) => {
     console.log("MongoDB Connection Failed", error);
   });
+
+**Errors**  
+informational Response=(100-199)
+Successful Response(200-299)
+Client Error Message(400-499)
+Server Error Message(500-599)
