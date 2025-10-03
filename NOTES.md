@@ -57,3 +57,25 @@ UserSchema.pre("save", async function(next){
 })
 **Cloudinary**
 fs = filesystem used in sytemic arrangemenets of a file for eg link unlink upload synchronously asynchronously 
+**HTTP**
+URL-Uniform Resource Locater
+URI- Uniform Resource Identifier 
+URN - " " Name
+
+What are HTTP Headers 
+metadata - Key value Pair
+caching authentication manage state
+
+Request Headers - From Client
+Response Headers - From server
+Representation headers - encoding/ compression
+payload Headers - data
+
+Methods
+GET: retrieve a resource
+HEAD: No message body(response Headers only)
+OPTIONS: what operators are availabLe
+DELETE : remove a resource
+PUT : replace a resource
+POST : interact with resource
+PATCH : change part of a resource
