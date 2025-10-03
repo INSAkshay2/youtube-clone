@@ -1,6 +1,7 @@
 // Important Notes BACKEND 
 **Setup of the file**
 npm i express mongoose cookie-parser cors mongoose-aggregate-paginate-v2 bcrypt jsonwebtoken
+cloudinary multer
 cd src 
 touch app.js constant.js index.js
 package.json - "type" :"module"
@@ -54,3 +55,5 @@ UserSchema.pre("save", async function(next){
   this.password =bcrypt.has(this.passowrd,10)
   next()
 })
+**Cloudinary**
+fs = filesystem used in sytemic arrangemenets of a file for eg link unlink upload synchronously asynchronously 
