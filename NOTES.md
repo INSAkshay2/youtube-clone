@@ -1,6 +1,6 @@
 // Important Notes BACKEND 
 **Setup of the file**
-npm i express mongoose cookie-parser cors
+npm i express mongoose cookie-parser cors mongoose-aggregate-paginate-v2 bcrypt jsonwebtoken
 cd src 
 touch app.js constant.js index.js
 package.json - "type" :"module"
@@ -45,3 +45,12 @@ informational Response=(100-199)
 Successful Response(200-299)
 Client Error Message(400-499)
 Server Error Message(500-599)
+
+**Middlewares in Mongoose**
+Prehook- just when data is about to be saved the system performs a certain block of code just bbefore saving
+
+UserSchema.pre("save", async function(next){
+  if(!this.isModified) return next();
+  this.password =bcrypt.has(this.passowrd,10)
+  next()
+})

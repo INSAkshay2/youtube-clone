@@ -24,15 +24,15 @@ const userSchema = new Schema(
       index: true,
     },
     avatar: {
-      type: String,
+      type: String, //Cloudinary URL
       required: true,
     },
     coverImage: {
-      type: String,
+      type: String,  //Cloudinary URL
     },
     watchHistory: [
       {
-        type: Object.Schema.Types.ObjectId,
+        type: Schema.Types.ObjectId,
         ref: "Video",
       },
     ],
