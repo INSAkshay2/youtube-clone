@@ -79,3 +79,14 @@ DELETE : remove a resource
 PUT : replace a resource
 POST : interact with resource
 PATCH : change part of a resource
+**User Controller**
+Register
+  // get user details from req.body
+  // validate user details(not empty)
+  // check if user already exists with email or username
+  // if user exists, throw error
+  // upload avatar and cover image to cloudinary
+  // create user in db
+  // return success response with user details (excluding password and refresh token)
+  // check for user creation errors
+  // return error response if any step fails
