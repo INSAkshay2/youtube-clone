@@ -1,5 +1,8 @@
 import mongoose from "mongoose";
 // import { DB_Name } from "../../constants.js";
+import express from "express";
+
+const app = express();
 
 const connectDB = async () => {
   try {
@@ -15,13 +18,13 @@ const connectDB = async () => {
 };
 
 export default connectDB;
-connectDB()
-  .then(() => {
-    app.listen(process.env.PORT || 8000, () => {
-      console.log(`Server is running on port ${process.env.PORT || 8000}`);
-    });
-  })
+// connectDB()
+//   .then(() => {
+//     app.listen(process.env.PORT || 4000, () => {
+//       console.log(`Server is running on port ${process.env.PORT || 8000}`);
+//     });
+//   })
 
-  .catch((error) => {
-    console.log("MongoDB Connection Failed", error);
-  });
+//   .catch((error) => {
+//     console.log("MongoDB Connection Failed", error);
+//   });
