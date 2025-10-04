@@ -1,4 +1,4 @@
-import { V2 as cloudinary } from "cloudinary";
+import { v2 as cloudinary } from "cloudinary";
 import fs from "fs";
 
 cloudinary.config({
@@ -20,7 +20,7 @@ const uploadOnCloudinary = async (localFilePath) => {
     return null;
   }
 };
-cloudinary.v2.uploader();
+
 
 const uploadResult = await cloudinary.uploader
   .upload(
@@ -34,3 +34,5 @@ const uploadResult = await cloudinary.uploader
   });
 
 console.log(uploadResult);
+
+export { uploadOnCloudinary };
