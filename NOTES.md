@@ -90,3 +90,12 @@ Register
   // return success response with user details (excluding password and refresh token)
   // check for user creation errors
   // return error response if any step fails
+
+**Login User**
+req body -> data
+username or email
+find the user
+check for password
+access and refresh token generate
+send cookie
+send response
