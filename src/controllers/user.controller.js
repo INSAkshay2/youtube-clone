@@ -97,6 +97,12 @@ const loginUser = asyncHandler(async (req, res) => {
   if(!accessToken||!refreshToken){
     throw new ApiError(500,"Token generation failed")
   }
+  const loggedInUser = await User.findById(user._id).select(
+    "-password -refreshToken"
+  );
+  res
+    .status(200)
+    .json(new ApiResponse(200, "User logged in successfully", {user:loggedInUser,accessToken,refreshToken}));
 
 
 
