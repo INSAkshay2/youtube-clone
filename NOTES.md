@@ -99,3 +99,5 @@ check for password
 access and refresh token generate
 send cookie
 send response
+
+**Auth-Middleware**

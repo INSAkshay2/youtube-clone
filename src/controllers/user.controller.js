@@ -106,11 +106,7 @@ const loginUser = asyncHandler(async (req, res) => {
     .cookie("refreshToken", refreshToken, options)
     .json(new ApiResponse(200, "User logged in successfully", loggedInUser))
 
-  const logoutUser
-
-
-
 });
 export { loginUser };
 
-export { registerUser };
+export { registerUser } ;
