@@ -137,25 +137,25 @@ const refreshAccessToken = asyncHandler(async (req, res) => {
       incomingRefreshToken,
       process.env.JWT_REFRESH_SECRET
     );
-  
+
     const user = await User.findById(decodedToken?._id);
     if (!user) {
       throw new ApiError(404, "User not found");
     }
-  
+
     if (incomingRefreshToken !== user?.refreshToken) {
       throw new ApiError(401, "Refresh token is expired or used");
     }
-  
+
     const { accessToken, refreshToken } = await generateAccessandRefreshToken(
       user._id
     );
-  
+
     const options = {
       httpOnly: true,
       secure: true,
     };
-  
+
     return res
       .status(200)
       .cookie("accessToken", accessToken, options)
@@ -171,4 +171,39 @@ const refreshAccessToken = asyncHandler(async (req, res) => {
     throw new ApiError(401, "Invalid or expired refresh token");
   }
 });
-export { loginUser, registerUser, logoutUser, refreshAccessToken };
+
+const changeCurrentPassword = asyncHandler(async (req, res) => {
+  const { oldPassword, newPassword } = req.body;
+  if (!oldPassword || !newPassword) {
+    throw new ApiError(400, "Both fields are necessary");
+  }
+  const user = await User.findById(req.user._id);
+  if (!user) {
+    throw new ApiError(404, "User not found");
+  }
+  const isPasswordValid = await user.isPasswordCorrect(oldPassword);
+  if (!isPasswordValid) {
+    throw new ApiError(401, "Invalid old password");
+  }
+  user.password = newPassword;
+  await user.save({ validateBeforeSave: false });
+
+  return res
+    .status(200)
+    .json(new ApiResponse(200, {}, "Password changed successfully"));
+});
+
+const getCurrentUser = asyncHandler(async (req, res) => {
+  return res
+    .status(200)
+    .json(new ApiResponse(200, req.user, "Current user fetched successfully"));
+});
+export {
+  loginUser,
+  registerUser,
+  logoutUser,
+  refreshAccessToken,
+  changeCurrentPassword,
+  getCurrentUser,
+  generateAccessandRefreshToken,
+};
