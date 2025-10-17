@@ -17,13 +17,13 @@ import { Button } from "@/components/ui/button";
 const styles = {
   container: "w-full max-w-md",
   header: "space-y-1",
-  title: "text-3xl font-bold text-pink-500",
+  title: "text-3xl font-bold text-black-500",
   content: "space-y-4",
   fieldGroup: "space-y-2",
   footer: "flex flex-col",
   button: "w-full",
   prompt: "mt-4 text-center text-sm",
-  link: "ml-2 text-pink-500",
+  link: "ml-2 text-black-500",
 };
 
 export function SignupForm() {
