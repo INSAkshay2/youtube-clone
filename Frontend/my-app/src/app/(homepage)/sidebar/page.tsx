@@ -1,12 +1,5 @@
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
-import { AppSidebar } from "@/components/app-sidebar";
+import {SidebarPage} from "@/components/sidebar/page";
 
-export default function SidebarPage() {
-  <SidebarProvider>
-    <AppSidebar />
-    <main>
-      <SidebarTrigger />
-      Sidebar Page
-    </main>
-  </SidebarProvider>;
+export default function SidebarRoute() {
+  return <SidebarPage />;
 }
